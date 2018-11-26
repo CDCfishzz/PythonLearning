@@ -18,7 +18,7 @@ def count():
             return j * j
         return g
     fs = []
-    for i in range(1,4):
+    for i in range(1, 4):
         fs.append(ff(i))
     return fs
 
@@ -27,15 +27,16 @@ f1, f2, f3 = count()
 print(f1(), f2(), f3())
 
 
-def createCounter():
+def create_counter():
     n = [0]
+
     def counter():
         n[0] += 1
         return n[0]
     return counter
 
 
-counterA = createCounter()
+counterA = create_counter()
 print(counterA(), counterA(), counterA(), counterA(), counterA())
 
 

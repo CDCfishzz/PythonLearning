@@ -8,6 +8,16 @@ class Student(object):
     def __repr__(self):
         return 'Student object (name: %s)' % self.name
 
+    def __call__(self):
+        print('My name is %s' % self.name)
+
+    def __getattr__(self, attr):
+        if attr == 'score':
+            return 98
+        if attr == 'age':
+            return lambda: 25
+        raise AttributeError('\'Student\' object has no attribute \'%s\'' % attr)
+
 
 class Fib(object):
     def __init__(self):
@@ -44,10 +54,34 @@ class Fib(object):
 # create a iteration
 
 
-for n in Fib():
-    print(n)
+class Chain(object):
+    def __init__(self, path=''):
+        self._path = path
+
+    def __getattr__(self, path):
+        return Chain('%s/%s' % (self._path, path))
+
+    def __str__(self):
+        return self._path
+
+    def users(self, user_name):
+        return Chain('%s/%s' % (self._path, user_name))
+        pass
+
+    # GET / users /: user / repos
+    # 调用时，需要把: user替换为实际用户名。如果我们能写出这样的链式调用：
+    # Chain().users('michael').repos
+
+    __repr__ = __str__
+
+
+# for n in Fib():
+#     print(n)
 f = Fib()
-print(f[0], f[1], f[:6])
-print(Student('Mike'))
+# print(f[0], f[1], f[:6])
+# print(Student('Mike'))
 
-
+s = Student('FishZz')
+s()
+print(s.score, s.age(), )
+print(Chain().status.users('FishZz').timeline.list)
