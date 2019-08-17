@@ -38,4 +38,13 @@ if __name__ == '__main__':
     r = subprocess.call(['nslookup', 'www.python.org'])
     print('Exit code:', r)
 
+    print('$ nslookup 2')
+    p_sub = subprocess.Popen(['nslookup'],
+                             stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
+    output, err = p_sub.communicate(b'set q=mx\npython.org\nexit\n')
+    print(output.decode('gb18030'))
+    print('Exit code:', p_sub.returncode)
+
 
