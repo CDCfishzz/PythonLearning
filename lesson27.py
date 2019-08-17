@@ -26,6 +26,7 @@ if __name__ == '__main__':
     p.join()
     print('Child process end.')
 
+    # subprocess
     p2 = Pool(4)
     for i in range(5):
         p2.apply_async(long_time_task, args=(1,))
