@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from multiprocessing import Process
 import os
+from multiprocessing import Process
 
 
 def run_proc(name):
