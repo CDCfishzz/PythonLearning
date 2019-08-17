@@ -128,3 +128,4 @@ venv/Lib/site-packages/requests/packages/urllib3/util/__pycache__/
 venv/Scripts/__pycache__/
 out
 gen
+/venv/
