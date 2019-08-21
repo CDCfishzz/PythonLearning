@@ -32,6 +32,8 @@ result = m.get_result_queue()
 for i in range(10):
     try:
         n = task.get(timeout=1)
+        print('run task %d * %d...' %(n, n))
+
 
 # 关闭:
 manager.shutdown()
